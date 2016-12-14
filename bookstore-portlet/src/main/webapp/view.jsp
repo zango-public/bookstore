@@ -18,4 +18,4 @@
 
 <portlet:defineObjects />
 
-This is the <b>bookstore</b>.
+This is virtuoso and this is the <b>bookstore</b>.
