@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="com.zango.model.Books" />
+	<class name="com.zango.model.impl.BooksImpl" table="bookstore_Books">
+		<cache usage="read-write" />
+		<id name="bookId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="uuid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="uuid_" />
+		<property name="bookName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="bookAuthor" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="bookResume" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+</hibernate-mapping>

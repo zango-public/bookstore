@@ -1,0 +1,1 @@
+create index IX_ABF7A76B on bookstore_Books (uuid_);

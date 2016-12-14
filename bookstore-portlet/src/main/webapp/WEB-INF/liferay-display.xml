@@ -4,5 +4,6 @@
 <display>
 	<category name="category.sample">
 		<portlet id="bookstore" />
+		<portlet id="book"></portlet>
 	</category>
 </display>
