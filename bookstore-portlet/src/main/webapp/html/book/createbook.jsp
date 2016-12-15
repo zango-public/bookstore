@@ -9,10 +9,10 @@ This is the <b>Book</b> portlet in View mode.
 </liferay-portlet:actionURL>
 
 <liferay-portlet:renderURL var="nextURL">
-	<liferay-portlet:param name="mvcPath" value="showBooks.jsp"/>
+	<liferay-portlet:param name="mvcPath" value="/html/book/showbooks.jsp"/>
 </liferay-portlet:renderURL> 
 
-<aui:a href="<%=nextURL %>" label="go-next"></aui:a>
+<aui:a href="<%=nextURL %>" label="Show-All-Books"></aui:a>
 
 
 <aui:form action="<%=addBookURL %>" name="bookForm">

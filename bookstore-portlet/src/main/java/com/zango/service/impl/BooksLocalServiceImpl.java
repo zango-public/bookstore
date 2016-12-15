@@ -37,4 +37,11 @@ public class BooksLocalServiceImpl extends BooksLocalServiceBaseImpl {
 	} 
 	
 	
+	public Books deleteBook(long bookId, ServiceContext serviceContext) throws PortalException, SystemException{
+		return this.deleteBooks(bookId);
+	}
+	
+	
+	
+	
 }
