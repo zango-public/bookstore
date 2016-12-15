@@ -27,6 +27,8 @@ public class BookPortlet extends MVCPortlet {
 	 */
 	public void addBook(ActionRequest actionRequest, ActionResponse actionResponse) throws SystemException, PortalException{		
 		
+		
+		System.out.println("Here I am !");
 		String bookName = ParamUtil.get(actionRequest, "bookName", "The msytery");
 		String bookAuthor = ParamUtil.get(actionRequest, "bookAuthor", "Reda Virtuoso");
 		String bookResume = ParamUtil.get(actionRequest, "bookResume", "An awesome book talking about nothing at all!");
