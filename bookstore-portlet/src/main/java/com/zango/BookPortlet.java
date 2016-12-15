@@ -30,7 +30,7 @@ public class BookPortlet extends MVCPortlet {
 		
 		System.out.println("Here I am !");
 		String bookName = ParamUtil.get(actionRequest, "bookName", "The msytery");
-		String bookAuthor = ParamUtil.get(actionRequest, "bookAuthor", "Reda Virtuoso");
+		String bookAuthor = ParamUtil.get(actionRequest, "bookAuthor", "Reda");
 		String bookResume = ParamUtil.get(actionRequest, "bookResume", "An awesome book talking about nothing at all!");
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(actionRequest);
 		BooksLocalServiceUtil.addBooks(bookName,bookAuthor,bookResume,serviceContext);		
