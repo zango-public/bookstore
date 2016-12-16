@@ -2,8 +2,17 @@
 
 <%@include file="../init.jsp"%>
 
-	
 
+<liferay-portlet:renderURL var="addbookURL">
+	<liferay-portlet:param name="mvcPath" value="/html/book/createbook.jsp"/>
+</liferay-portlet:renderURL> 
+<liferay-portlet:renderURL var="showDetailURL">
+	<liferay-portlet:param name="mvcPath" value="/html/book/showdetailbook.jsp"/>
+</liferay-portlet:renderURL>
+<a href="<%=addbookURL %>">Add Book</a>
+<aui:field-wrapper>
+<liferay-portlet:actionURL var="deleteBookURL" name="deleteBook" >
+				</liferay-portlet:actionURL>
 <liferay-ui:search-container delta="10" emptyResultsMessage="no-book-were-found">
 	<liferay-ui:search-container-results>
 	
@@ -17,7 +26,7 @@
 	</liferay-ui:search-container-results>
 
 	<liferay-ui:search-container-row className="com.zango.model.Books" keyProperty="bookId" modelVar="book">
-		<liferay-ui:search-container-column-text
+		<liferay-ui:search-container-column-text 
 			name="name"
 			value="<%= book.getBookName() %>"
 			target="_blank"
@@ -35,22 +44,12 @@
 			name="book-resume"
 			property="bookResume"
 		/>
-		<liferay-ui:search-container-column-text
-			name="Configuration"			
-		>
-		<liferay-portlet:actionURL var="deleteBookURL" name="deleteBook" >
-					<liferay-portlet:param name="bookId" value="<%=book.getBookId() %>"/>
-				</liferay-portlet:actionURL>
-			<aui:a href="#" label="Show Details"></aui:a>
-			<br>
-			<aui:button name="updateBook" type="edit" value="edit"></aui:button>
-			<br>
-			<aui:button name="<%=deleteBookURL %>" type="delete" value="delete"></aui:button>	
-		</liferay-ui:search-container-column-text>
+		
+		<liferay-ui:search-container-column-jsp name="Actions" path="/html/book/actionbook.jsp" align="right" />
 		
 	</liferay-ui:search-container-row>
 
 	<liferay-ui:search-iterator />
 
 </liferay-ui:search-container>
-
+</aui:field-wrapper>

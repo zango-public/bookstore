@@ -264,6 +264,24 @@ public class BooksLocalServiceUtil {
                    .addBooks(bookName, bookAuthor, bookResume, serviceContext);
     }
 
+    public static com.zango.model.Books deleteBook(long bookId,
+        com.liferay.portal.service.ServiceContext serviceContext)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return getService().deleteBook(bookId, serviceContext);
+    }
+
+    public static com.zango.model.Books updateBook(long bookId,
+        java.lang.String bookName, java.lang.String bookAuthor,
+        java.lang.String bookResume,
+        com.liferay.portal.service.ServiceContext serviceContext)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return getService()
+                   .updateBook(bookId, bookName, bookAuthor, bookResume,
+            serviceContext);
+    }
+
     public static void clearService() {
         _service = null;
     }

@@ -33,9 +33,6 @@ This is the <b>Liferay Book</b>.
 </aui:form>
 
 
-<%-- <liferay-portlet:renderURL var="nextURL">
-	<liferay-portlet:param name="mvcPath" value="/html/view2.jsp"/>
-</liferay-portlet:renderURL> --%>
 
 
 

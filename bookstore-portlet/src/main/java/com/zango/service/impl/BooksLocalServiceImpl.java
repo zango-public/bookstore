@@ -41,7 +41,20 @@ public class BooksLocalServiceImpl extends BooksLocalServiceBaseImpl {
 		return this.deleteBooks(bookId);
 	}
 	
+	public Books updateBook(long bookId,String bookName,String bookAuthor,String bookResume,ServiceContext serviceContext)throws PortalException, SystemException{
+		Books book=booksPersistence.findByPrimaryKey(bookId);
+		book.setBookName(bookName);
+		book.setBookAuthor(bookAuthor);
+		book.setBookResume(bookResume);
+		
+		return this.updateBooks(book);		
+	}
 	
-	
+	/*public Books getBook(long id){
+		return this.getBook(id);
+	}*/
 	
 }
+	
+	
+

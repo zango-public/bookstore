@@ -37,7 +37,7 @@
 		<portlet-class>com.zango.BookPortlet</portlet-class>
 		<init-param>
 			<name>view-template</name>
-			<value>/html/book/createbook.jsp</value>
+			<value>/html/book/showbooks.jsp</value>
 		</init-param>
 		<expiration-cache>0</expiration-cache>
 		<supports>

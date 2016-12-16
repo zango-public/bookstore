@@ -46,6 +46,10 @@ public class BooksLocalServiceClp implements BooksLocalService {
     private String[] _methodParameterTypes17;
     private String _methodName19;
     private String[] _methodParameterTypes19;
+    private String _methodName20;
+    private String[] _methodParameterTypes20;
+    private String _methodName21;
+    private String[] _methodParameterTypes21;
 
     public BooksLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -139,6 +143,19 @@ public class BooksLocalServiceClp implements BooksLocalService {
         _methodParameterTypes19 = new String[] {
                 "java.lang.String", "java.lang.String", "java.lang.String",
                 "com.liferay.portal.service.ServiceContext"
+            };
+
+        _methodName20 = "deleteBook";
+
+        _methodParameterTypes20 = new String[] {
+                "long", "com.liferay.portal.service.ServiceContext"
+            };
+
+        _methodName21 = "updateBook";
+
+        _methodParameterTypes21 = new String[] {
+                "long", "java.lang.String", "java.lang.String",
+                "java.lang.String", "com.liferay.portal.service.ServiceContext"
             };
     }
 
@@ -661,6 +678,88 @@ public class BooksLocalServiceClp implements BooksLocalService {
                     _methodParameterTypes19,
                     new Object[] {
                         ClpSerializer.translateInput(bookName),
+                        
+                    ClpSerializer.translateInput(bookAuthor),
+                        
+                    ClpSerializer.translateInput(bookResume),
+                        
+                    ClpSerializer.translateInput(serviceContext)
+                    });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+                throw (com.liferay.portal.kernel.exception.PortalException) t;
+            }
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (com.zango.model.Books) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public com.zango.model.Books deleteBook(long bookId,
+        com.liferay.portal.service.ServiceContext serviceContext)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName20,
+                    _methodParameterTypes20,
+                    new Object[] {
+                        bookId,
+                        
+                    ClpSerializer.translateInput(serviceContext)
+                    });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+                throw (com.liferay.portal.kernel.exception.PortalException) t;
+            }
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (com.zango.model.Books) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public com.zango.model.Books updateBook(long bookId,
+        java.lang.String bookName, java.lang.String bookAuthor,
+        java.lang.String bookResume,
+        com.liferay.portal.service.ServiceContext serviceContext)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName21,
+                    _methodParameterTypes21,
+                    new Object[] {
+                        bookId,
+                        
+                    ClpSerializer.translateInput(bookName),
                         
                     ClpSerializer.translateInput(bookAuthor),
                         

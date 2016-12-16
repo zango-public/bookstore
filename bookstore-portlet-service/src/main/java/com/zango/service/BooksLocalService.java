@@ -238,4 +238,16 @@ public interface BooksLocalService extends BaseLocalService,
         com.liferay.portal.service.ServiceContext serviceContext)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
+
+    public com.zango.model.Books deleteBook(long bookId,
+        com.liferay.portal.service.ServiceContext serviceContext)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException;
+
+    public com.zango.model.Books updateBook(long bookId,
+        java.lang.String bookName, java.lang.String bookAuthor,
+        java.lang.String bookResume,
+        com.liferay.portal.service.ServiceContext serviceContext)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException;
 }

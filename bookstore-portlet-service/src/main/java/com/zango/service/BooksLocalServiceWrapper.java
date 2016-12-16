@@ -274,6 +274,25 @@ public class BooksLocalServiceWrapper implements BooksLocalService,
             serviceContext);
     }
 
+    @Override
+    public com.zango.model.Books deleteBook(long bookId,
+        com.liferay.portal.service.ServiceContext serviceContext)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return _booksLocalService.deleteBook(bookId, serviceContext);
+    }
+
+    @Override
+    public com.zango.model.Books updateBook(long bookId,
+        java.lang.String bookName, java.lang.String bookAuthor,
+        java.lang.String bookResume,
+        com.liferay.portal.service.ServiceContext serviceContext)
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return _booksLocalService.updateBook(bookId, bookName, bookAuthor,
+            bookResume, serviceContext);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */
