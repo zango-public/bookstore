@@ -35,8 +35,8 @@ public class BookPortlet extends MVCPortlet {
 	}
 	
 	public void deleteBook(ActionRequest actionRequest, ActionResponse actionResponse)throws SystemException, PortalException{
-		String contractId = actionRequest.getParameter("contractId");
-		BooksLocalServiceUtil.deleteBooks(Long.valueOf(contractId));		
+		long bookId=ParamUtil.getLong(actionRequest, "bookId");
+		BooksLocalServiceUtil.deleteBooks(bookId);		
 	}
 
 }
