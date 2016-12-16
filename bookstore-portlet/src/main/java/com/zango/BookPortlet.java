@@ -58,8 +58,11 @@ public class BookPortlet extends MVCPortlet {
 	
 	public void showDetailBook(ActionRequest actionRequest, ActionResponse actionResponse)throws SystemException, PortalException{
 		long bookId=ParamUtil.getLong(actionRequest, "bookId");
-		System.out.println("Virtuoso Id is "+bookId);
-		actionResponse.setRenderParameter("bookId", "bookId");
+		Books book=BooksLocalServiceUtil.getBooks(bookId);
+		System.out.println("Virtuoso book"+book.getBookName());
+		actionResponse.setRenderParameter("bookName", book.getBookName());
+		actionResponse.setRenderParameter("bookAuthor", book.getBookAuthor());
+		actionResponse.setRenderParameter("bookResume", book.getBookResume());
 		actionResponse.setRenderParameter("jspPage","/html/book/showdetailbook.jsp");		
 	}
 	
