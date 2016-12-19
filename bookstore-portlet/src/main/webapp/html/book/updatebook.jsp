@@ -6,7 +6,6 @@
 
 <%
 String bookId=ParamUtil.getString(request,"bookId");
-System.out.println("I gott it here!"+bookId);
 %>
 
 <portlet:renderURL var="backURL">

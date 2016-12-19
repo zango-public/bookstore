@@ -6,7 +6,6 @@
 
 
 <%
-//	Books book=(Books) request.getAttribute("bookId");
 	String bookAuthor=ParamUtil.getString(request,"bookAuthor");
 	String bookName=ParamUtil.getString(request,"bookName");
 	String bookResume=ParamUtil.getString(request,"bookResume");
