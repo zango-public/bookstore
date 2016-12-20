@@ -1,5 +1,12 @@
 package com.zango.service.http;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+
+import com.zango.service.BooksServiceUtil;
+
+import java.rmi.RemoteException;
+
 /**
  * Provides the SOAP utility for the
  * {@link com.zango.service.BooksServiceUtil} service utility. The
@@ -41,4 +48,18 @@ package com.zango.service.http;
  * @generated
  */
 public class BooksServiceSoap {
+    private static Log _log = LogFactoryUtil.getLog(BooksServiceSoap.class);
+
+    public static com.zango.model.BooksSoap getBooks()
+        throws RemoteException {
+        try {
+            com.zango.model.Books returnValue = BooksServiceUtil.getBooks();
+
+            return com.zango.model.BooksSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
+
+            throw new RemoteException(e.getMessage());
+        }
+    }
 }

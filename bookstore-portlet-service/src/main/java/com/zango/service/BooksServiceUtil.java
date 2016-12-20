@@ -51,6 +51,10 @@ public class BooksServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
+    public static com.zango.model.Books getBooks() {
+        return getService().getBooks();
+    }
+
     public static void clearService() {
         _service = null;
     }

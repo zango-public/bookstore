@@ -44,6 +44,11 @@ public class BooksServiceWrapper implements BooksService,
         return _booksService.invokeMethod(name, parameterTypes, arguments);
     }
 
+    @Override
+    public com.zango.model.Books getBooks() {
+        return _booksService.getBooks();
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

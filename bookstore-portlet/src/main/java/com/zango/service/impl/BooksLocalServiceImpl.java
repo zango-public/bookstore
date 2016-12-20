@@ -50,6 +50,10 @@ public class BooksLocalServiceImpl extends BooksLocalServiceBaseImpl {
 		return this.updateBooks(book);		
 	}
 	
+	public Books getBooks(){
+		return this.getBooks();
+	}
+	
 }
 	
 	

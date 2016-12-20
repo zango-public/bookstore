@@ -1,5 +1,7 @@
 package com.zango.service.impl;
 
+import com.zango.model.Books;
+import com.zango.service.BooksLocalServiceUtil;
 import com.zango.service.base.BooksServiceBaseImpl;
 
 /**
@@ -22,4 +24,7 @@ public class BooksServiceImpl extends BooksServiceBaseImpl {
      *
      * Never reference this interface directly. Always use {@link com.zango.service.BooksServiceUtil} to access the books remote service.
      */
+	public Books getBooks(){
+		return BooksLocalServiceUtil.getBooks();
+	}
 }

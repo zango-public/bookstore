@@ -282,6 +282,10 @@ public class BooksLocalServiceUtil {
             serviceContext);
     }
 
+    public static com.zango.model.Books getBooks() {
+        return getService().getBooks();
+    }
+
     public static void clearService() {
         _service = null;
     }

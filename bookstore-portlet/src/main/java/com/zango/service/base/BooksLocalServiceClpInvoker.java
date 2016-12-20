@@ -51,6 +51,8 @@ public class BooksLocalServiceClpInvoker {
     private String[] _methodParameterTypes41;
     private String _methodName42;
     private String[] _methodParameterTypes42;
+    private String _methodName43;
+    private String[] _methodParameterTypes43;
 
     public BooksLocalServiceClpInvoker() {
         _methodName0 = "addBooks";
@@ -156,6 +158,10 @@ public class BooksLocalServiceClpInvoker {
                 "long", "java.lang.String", "java.lang.String",
                 "java.lang.String", "com.liferay.portal.service.ServiceContext"
             };
+
+        _methodName43 = "getBooks";
+
+        _methodParameterTypes43 = new String[] {  };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -280,6 +286,11 @@ public class BooksLocalServiceClpInvoker {
                 (java.lang.String) arguments[2],
                 (java.lang.String) arguments[3],
                 (com.liferay.portal.service.ServiceContext) arguments[4]);
+        }
+
+        if (_methodName43.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes43, parameterTypes)) {
+            return BooksLocalServiceUtil.getBooks();
         }
 
         throw new UnsupportedOperationException();

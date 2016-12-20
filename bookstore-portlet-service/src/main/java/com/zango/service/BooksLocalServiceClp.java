@@ -50,6 +50,8 @@ public class BooksLocalServiceClp implements BooksLocalService {
     private String[] _methodParameterTypes20;
     private String _methodName21;
     private String[] _methodParameterTypes21;
+    private String _methodName22;
+    private String[] _methodParameterTypes22;
 
     public BooksLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -157,6 +159,10 @@ public class BooksLocalServiceClp implements BooksLocalService {
                 "long", "java.lang.String", "java.lang.String",
                 "java.lang.String", "com.liferay.portal.service.ServiceContext"
             };
+
+        _methodName22 = "getBooks";
+
+        _methodParameterTypes22 = new String[] {  };
     }
 
     @Override
@@ -777,6 +783,27 @@ public class BooksLocalServiceClp implements BooksLocalService {
             if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
                 throw (com.liferay.portal.kernel.exception.SystemException) t;
             }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (com.zango.model.Books) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public com.zango.model.Books getBooks() {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName22,
+                    _methodParameterTypes22, new Object[] {  });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
 
             if (t instanceof RuntimeException) {
                 throw (RuntimeException) t;
