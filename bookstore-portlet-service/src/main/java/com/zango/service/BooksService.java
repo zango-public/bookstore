@@ -52,6 +52,14 @@ public interface BooksService extends BaseService, InvokableService {
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
 
+    @com.liferay.portal.security.ac.AccessControlled(guestAccessEnabled = true)
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public com.zango.model.Books getBooks();
+    public com.zango.model.Books getBook()
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException;
+
+    @com.liferay.portal.security.ac.AccessControlled(guestAccessEnabled = true)
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<com.zango.model.Books> getAllBooks()
+        throws com.liferay.portal.kernel.exception.SystemException;
 }

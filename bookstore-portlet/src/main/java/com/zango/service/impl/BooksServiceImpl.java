@@ -1,5 +1,10 @@
 package com.zango.service.impl;
 
+import java.util.List;
+
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.security.ac.AccessControlled;
 import com.zango.model.Books;
 import com.zango.service.BooksLocalServiceUtil;
 import com.zango.service.base.BooksServiceBaseImpl;
@@ -24,7 +29,13 @@ public class BooksServiceImpl extends BooksServiceBaseImpl {
      *
      * Never reference this interface directly. Always use {@link com.zango.service.BooksServiceUtil} to access the books remote service.
      */
-	public Books getBooks(){
-		return BooksLocalServiceUtil.getBooks();
+	@AccessControlled(guestAccessEnabled=true)
+	public Books getBook() throws PortalException, SystemException{
+		return BooksLocalServiceUtil.getBooks(21901);
+	}
+		
+	@AccessControlled(guestAccessEnabled=true)
+	public List<Books> getAllBooks() throws SystemException{
+		return BooksLocalServiceUtil.getBookses(0, BooksLocalServiceUtil.getBooksesCount());
 	}
 }

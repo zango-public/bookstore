@@ -15,6 +15,8 @@ public class BooksServiceClpInvoker {
     private String[] _methodParameterTypes19;
     private String _methodName24;
     private String[] _methodParameterTypes24;
+    private String _methodName25;
+    private String[] _methodParameterTypes25;
 
     public BooksServiceClpInvoker() {
         _methodName18 = "getBeanIdentifier";
@@ -25,9 +27,13 @@ public class BooksServiceClpInvoker {
 
         _methodParameterTypes19 = new String[] { "java.lang.String" };
 
-        _methodName24 = "getBooks";
+        _methodName24 = "getBook";
 
         _methodParameterTypes24 = new String[] {  };
+
+        _methodName25 = "getAllBooks";
+
+        _methodParameterTypes25 = new String[] {  };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -46,7 +52,12 @@ public class BooksServiceClpInvoker {
 
         if (_methodName24.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes24, parameterTypes)) {
-            return BooksServiceUtil.getBooks();
+            return BooksServiceUtil.getBook();
+        }
+
+        if (_methodName25.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes25, parameterTypes)) {
+            return BooksServiceUtil.getAllBooks();
         }
 
         throw new UnsupportedOperationException();

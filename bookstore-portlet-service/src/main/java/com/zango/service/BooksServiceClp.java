@@ -14,6 +14,8 @@ public class BooksServiceClp implements BooksService {
     private String[] _methodParameterTypes1;
     private String _methodName3;
     private String[] _methodParameterTypes3;
+    private String _methodName4;
+    private String[] _methodParameterTypes4;
 
     public BooksServiceClp(InvokableService invokableService) {
         _invokableService = invokableService;
@@ -26,9 +28,13 @@ public class BooksServiceClp implements BooksService {
 
         _methodParameterTypes1 = new String[] { "java.lang.String" };
 
-        _methodName3 = "getBooks";
+        _methodName3 = "getBook";
 
         _methodParameterTypes3 = new String[] {  };
+
+        _methodName4 = "getAllBooks";
+
+        _methodParameterTypes4 = new String[] {  };
     }
 
     @Override
@@ -78,7 +84,9 @@ public class BooksServiceClp implements BooksService {
     }
 
     @Override
-    public com.zango.model.Books getBooks() {
+    public com.zango.model.Books getBook()
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
         Object returnObj = null;
 
         try {
@@ -86,6 +94,14 @@ public class BooksServiceClp implements BooksService {
                     _methodParameterTypes3, new Object[] {  });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+                throw (com.liferay.portal.kernel.exception.PortalException) t;
+            }
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
 
             if (t instanceof RuntimeException) {
                 throw (RuntimeException) t;
@@ -96,5 +112,31 @@ public class BooksServiceClp implements BooksService {
         }
 
         return (com.zango.model.Books) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public java.util.List<com.zango.model.Books> getAllBooks()
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableService.invokeMethod(_methodName4,
+                    _methodParameterTypes4, new Object[] {  });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (java.util.List<com.zango.model.Books>) ClpSerializer.translateOutput(returnObj);
     }
 }

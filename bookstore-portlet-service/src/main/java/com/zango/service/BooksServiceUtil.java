@@ -51,8 +51,15 @@ public class BooksServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
-    public static com.zango.model.Books getBooks() {
-        return getService().getBooks();
+    public static com.zango.model.Books getBook()
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return getService().getBook();
+    }
+
+    public static java.util.List<com.zango.model.Books> getAllBooks()
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getAllBooks();
     }
 
     public static void clearService() {

@@ -50,12 +50,24 @@ import java.rmi.RemoteException;
 public class BooksServiceSoap {
     private static Log _log = LogFactoryUtil.getLog(BooksServiceSoap.class);
 
-    public static com.zango.model.BooksSoap getBooks()
-        throws RemoteException {
+    public static com.zango.model.BooksSoap getBook() throws RemoteException {
         try {
-            com.zango.model.Books returnValue = BooksServiceUtil.getBooks();
+            com.zango.model.Books returnValue = BooksServiceUtil.getBook();
 
             return com.zango.model.BooksSoap.toSoapModel(returnValue);
+        } catch (Exception e) {
+            _log.error(e, e);
+
+            throw new RemoteException(e.getMessage());
+        }
+    }
+
+    public static com.zango.model.BooksSoap[] getAllBooks()
+        throws RemoteException {
+        try {
+            java.util.List<com.zango.model.Books> returnValue = BooksServiceUtil.getAllBooks();
+
+            return com.zango.model.BooksSoap.toSoapModels(returnValue);
         } catch (Exception e) {
             _log.error(e, e);
 

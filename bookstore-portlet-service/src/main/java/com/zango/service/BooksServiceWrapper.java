@@ -45,8 +45,16 @@ public class BooksServiceWrapper implements BooksService,
     }
 
     @Override
-    public com.zango.model.Books getBooks() {
-        return _booksService.getBooks();
+    public com.zango.model.Books getBook()
+        throws com.liferay.portal.kernel.exception.PortalException,
+            com.liferay.portal.kernel.exception.SystemException {
+        return _booksService.getBook();
+    }
+
+    @Override
+    public java.util.List<com.zango.model.Books> getAllBooks()
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _booksService.getAllBooks();
     }
 
     /**
