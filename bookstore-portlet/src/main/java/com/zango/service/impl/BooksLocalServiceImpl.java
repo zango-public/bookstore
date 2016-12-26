@@ -1,8 +1,22 @@
 package com.zango.service.impl;
 
+
+import java.util.List;
+
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.json.JSONFactoryUtil;
+import com.liferay.portal.kernel.json.JSONObject;
+import com.liferay.portal.kernel.util.PropsKeys;
+import com.liferay.portal.kernel.util.PropsUtil;
+import com.liferay.portal.model.Company;
+import com.liferay.portal.model.User;
+import com.liferay.portal.service.CompanyLocalServiceUtil;
 import com.liferay.portal.service.ServiceContext;
+import com.liferay.portal.service.UserLocalServiceUtil;
+import com.liferay.pushnotifications.service.PushNotificationsDeviceLocalServiceUtil;
+import com.liferay.pushnotifications.service.PushNotificationsDeviceServiceUtil;
+import com.liferay.pushnotifications.service.persistence.PushNotificationsDeviceUtil;
 import com.zango.model.Books;
 import com.zango.service.base.BooksLocalServiceBaseImpl;
 
@@ -21,6 +35,8 @@ import com.zango.service.base.BooksLocalServiceBaseImpl;
  * @see com.zango.service.BooksLocalServiceUtil
  */
 public class BooksLocalServiceImpl extends BooksLocalServiceBaseImpl {
+	
+	public static final int MAX_USERS = 200;
     /*
      * NOTE FOR DEVELOPERS:
      *
@@ -32,9 +48,47 @@ public class BooksLocalServiceImpl extends BooksLocalServiceBaseImpl {
 		book.setBookAuthor(bookAuthor);
 		book.setBookName(bookName);
 		book.setBookResume(bookResume);
+		
+		sendNotification(false);
 		return this.addBooks(book);
 		
 	} 
+	
+	private void sendNotification(boolean newNotification) throws PortalException, SystemException {
+		System.out.println("Send Notification Called !");
+		JSONObject jsonObject = JSONFactoryUtil.createJSONObject();
+		jsonObject.put("message", "A new book has been added!");
+		System.out.println("JsonObject Has been added !");
+
+
+		//FIXME find by token instead of users
+		List<User> users = findSomeUsers(0, MAX_USERS);
+		long[] ids = getPrimaryKeysFromAList(users);
+		
+		for(int i=0;i<ids.length;i++){
+			System.out.println("Ids Called  !"+ids[i]);
+		}
+		
+		
+		PushNotificationsDeviceLocalServiceUtil.sendPushNotification(ids,jsonObject);
+
+	}
+	
+	private List<User> findSomeUsers(int from, int to) throws PortalException, SystemException {
+		Company company = CompanyLocalServiceUtil.getCompanyByMx(PropsUtil.get(PropsKeys.COMPANY_DEFAULT_WEB_ID));
+		long companyId = company.getCompanyId();
+		System.out.println("Users found!");
+		return UserLocalServiceUtil.getCompanyUsers(companyId, from, to);
+	}
+
+	private long[] getPrimaryKeysFromAList(List<User> users) {
+		long[] ids = new long[users.size()];
+
+		for (int i = 0; i < users.size(); i++) {
+			ids[i] = users.get(i).getPrimaryKey();
+		}
+		return ids;
+	}
 	
 	
 	public Books deleteBook(long bookId, ServiceContext serviceContext) throws PortalException, SystemException{

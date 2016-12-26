@@ -81,5 +81,14 @@
 			<version>2.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.liferay/com.liferay.push.notifications.api -->
+		<dependency>
+		    <groupId>com.liferay</groupId>
+		    <artifactId>push-notifications</artifactId>
+		    <version>1.3.0</version>
+		    <scope>compile</scope>
+		</dependency>
+		
+		
 	</dependencies>
 </project>
