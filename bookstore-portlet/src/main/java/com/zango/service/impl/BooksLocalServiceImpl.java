@@ -55,32 +55,22 @@ public class BooksLocalServiceImpl extends BooksLocalServiceBaseImpl {
 	} 
 	
 	private void sendNotification(boolean newNotification) throws PortalException, SystemException {
-		System.out.println("Send Notification Called !");
 		JSONObject jsonObject = JSONFactoryUtil.createJSONObject();
-		jsonObject.put("message", "A new book has been added!");
-		System.out.println("JsonObject Has been added !");
+		jsonObject.put("body", "A new book has been added!");
 
 
 		//FIXME find by token instead of users
-		List<User> users = findSomeUsers(0, MAX_USERS);
+		List<User> users = findUsers();
 		long[] ids = getPrimaryKeysFromAList(users);
-		
-		for(int i=0;i<ids.length;i++){
-			System.out.println("Ids Called  !"+ids[i]);
-		}
-		
-		
+						
 		PushNotificationsDeviceLocalServiceUtil.sendPushNotification(ids,jsonObject);
-
 	}
 	
-	private List<User> findSomeUsers(int from, int to) throws PortalException, SystemException {
-		Company company = CompanyLocalServiceUtil.getCompanyByMx(PropsUtil.get(PropsKeys.COMPANY_DEFAULT_WEB_ID));
-		long companyId = company.getCompanyId();
-		System.out.println("Users found!");
-		return UserLocalServiceUtil.getCompanyUsers(companyId, from, to);
+	private List<User> findUsers() throws PortalException, SystemException {
+		int usersNumberUser=UserLocalServiceUtil.getUsersCount();
+		return UserLocalServiceUtil.getUsers(0, usersNumberUser);	
 	}
-
+	
 	private long[] getPrimaryKeysFromAList(List<User> users) {
 		long[] ids = new long[users.size()];
 
